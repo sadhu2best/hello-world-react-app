@@ -1,0 +1,26 @@
+version: '1.0'
+stages:
+  - build
+
+steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    repo: 'https://github.com/sadhu2best/hello-world-react-app.git'
+    revision: master
+
+  install_dependencies:
+    title: Installing Dependencies
+    stage: build
+    image: node:14
+    working_directory: /code
+    commands:
+      - npm install
+
+  build_app:
+    title: Building React App
+    stage: build
+    image: node:14
+    working_directory: /code
+    commands:
+      - npm run build
